@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_splash_radial.xml
+    Deep charcoal grey background with a subtle centered dark gradient.
+    Used as the root background of the new premium splash screen.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base deep charcoal -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#1A1C2E" />
+        </shape>
+    </item>
+
+    <!-- Subtle centre glow (radial simulated via oval + alpha) -->
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="50%p"
+                android:centerX="0.5"
+                android:centerY="0.42"
+                android:startColor="#261A3AFF"
+                android:endColor="#000D1B40" />
+        </shape>
+    </item>
+
+</layer-list>

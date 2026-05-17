@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Neon purple glow pill — matches the bg_icon_glow but shaped as a pill -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Wide soft outer glow -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="50dp" />
+            <solid android:color="#4D9B59FF" />
+        </shape>
+    </item>
+    <!-- Tighter bright ring -->
+    <item android:left="6dp" android:top="6dp"
+        android:right="6dp" android:bottom="6dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="50dp" />
+            <solid android:color="#6B9B59FF" />
+        </shape>
+    </item>
+</layer-list>

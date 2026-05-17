@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gradient fill for the loading progress bar -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <corners android:radius="50dp" />
+            <solid android:color="#1A1A2E" />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <corners android:radius="50dp" />
+                <gradient
+                    android:type="linear"
+                    android:angle="0"
+                    android:startColor="#5B6CF5"
+                    android:endColor="#9B59FF" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

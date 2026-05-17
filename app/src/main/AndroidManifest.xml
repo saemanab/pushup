@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ===================================================
+         PERMISSIONS
+         =================================================== -->
+    <!-- Overlay the lock screen on top of other apps -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Detect which app is in the foreground for blocking -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- High-speed sensors for rep detection -->
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+    <!-- Background service to stay alive while user is in another app -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!-- Notifications for the active session (Android 13+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Query all installed apps (for the app-selection screen) -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <!-- CAMERA — for ML Kit pose detection -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- VIBRATE — haptic feedback on each rep -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Hardware features -->
+    <uses-feature android:name="android.hardware.sensor.proximity" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PushUpLocker">
+
+        <!-- ── Splash / Entry point ── -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PushUpLocker.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- ── Screen 1: Multi-step Quiz ── -->
+        <activity
+            android:name=".QuizActivity"
+            android:exported="false" />
+
+        <!-- ── Screen 2: Loading / Calibration ── -->
+        <activity
+            android:name=".LoadingActivity"
+            android:exported="false" />
+
+        <!-- ── Screen 2b: Select Apps to Block ── -->
+        <activity
+            android:name=".AppSelectionActivity"
+            android:exported="false" />
+
+        <!-- ── Settings Screen ── -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <!-- ── Screen 3 & 4: Workout + Blocked State ── -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:showOnLockScreen="true" />
+
+        <!-- ── Background service: monitors foreground app & draws overlay ── -->
+        <service
+            android:name=".AppBlockerService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="monitorForegroundApp" />
+        </service>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_purple_splash.xml
+    Matches the reference image:
+      • Base: deep violet #4A3A96
+      • Centre highlight: lighter blue-purple #8B78D8
+      Simulated with a layer-list of a base colour + radial oval overlay.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base deep-purple layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="270"
+                android:startColor="#5B4DB5"
+                android:endColor="#3A2D82" />
+        </shape>
+    </item>
+
+    <!-- Radial centre highlight (lighter purple-blue) -->
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="90%p"
+                android:centerX="0.5"
+                android:centerY="0.38"
+                android:startColor="#508B78D8"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+
+    <!-- Subtle top-left light leak -->
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="55%p"
+                android:centerX="0.15"
+                android:centerY="0.08"
+                android:startColor="#2A9B8FE8"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+
+</layer-list>

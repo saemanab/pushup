@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ic_pushup_silhouette.xml
+    Minimalist vector silhouette — human in a push-up (down) position.
+    Designed to look like a clean, 3D-inspired figure when paired with
+    the neon-glow paint overlay in SplashActivity's custom view.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="280dp"
+    android:height="140dp"
+    android:viewportWidth="280"
+    android:viewportHeight="140">
+
+    <!-- ── HEAD ─────────────────────────────────────────────── -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 228,28 A 14,14 0 1 1 228,28.001 Z" />
+
+    <!-- ── NECK ──────────────────────────────────────────────── -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 222,42 L 226,50 L 230,50 L 234,42 Z" />
+
+    <!-- ── TORSO (shoulders to hips, horizontal in push-up) ─── -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 140,50 Q 190,46 230,52 L 228,70 Q 188,66 140,70 Z" />
+
+    <!-- ── RIGHT ARM (extended forward, shoulder near head) ──── -->
+    <!-- Upper arm -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 226,54 L 248,72 L 244,78 L 220,60 Z" />
+    <!-- Forearm (vertical to floor) -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 244,74 L 246,110 L 252,110 L 252,74 Z" />
+    <!-- Right hand -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 242,108 Q 249,115 256,108 L 254,106 Q 249,111 244,106 Z" />
+
+    <!-- ── LEFT ARM (bent, elbow near torso side) ─────────────── -->
+    <!-- Upper arm -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 160,52 L 152,72 L 158,74 L 166,54 Z" />
+    <!-- Forearm -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 152,70 L 150,110 L 156,110 L 158,70 Z" />
+    <!-- Left hand -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 146,108 Q 153,115 160,108 L 158,106 Q 153,111 148,106 Z" />
+
+    <!-- ── HIPS / PELVIS ───────────────────────────────────────── -->
+    <path
+        android:fillColor="#C5CAE9"
+        android:pathData="M 140,50 Q 120,54 108,62 L 112,76 Q 126,68 140,68 Z" />
+
+    <!-- ── RIGHT LEG (extended back, full length) ─────────────── -->
+    <!-- Upper leg -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 112,60 L 68,58 L 68,70 L 112,72 Z" />
+    <!-- Lower leg -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 68,58 L 32,56 L 32,66 L 68,68 Z" />
+    <!-- Right foot -->
+    <path
+        android:fillColor="#9FA8DA"
+        android:pathData="M 32,54 L 22,56 L 22,68 L 36,68 Z" />
+
+    <!-- ── LEFT LEG (parallel to right) ──────────────────────── -->
+    <!-- Upper leg -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 112,68 L 68,66 L 68,78 L 112,80 Z" />
+    <!-- Lower leg -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M 68,66 L 32,64 L 32,74 L 68,76 Z" />
+    <!-- Left foot -->
+    <path
+        android:fillColor="#9FA8DA"
+        android:pathData="M 32,62 L 22,64 L 22,76 L 36,76 Z" />
+
+    <!-- ── FLOOR SHADOW (subtle) ──────────────────────────────── -->
+    <path
+        android:fillColor="#1A2AFF"
+        android:fillAlpha="0.12"
+        android:pathData="M 20,115 Q 138,122 260,115 Q 138,124 20,115 Z" />
+
+</vector>

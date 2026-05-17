@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_quiz.xml — Multi-step onboarding quiz (4 steps via ViewFlipper).
+    Each child of the ViewFlipper is one quiz step.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_quiz_gradient">
+
+    <!-- ── Top: step label + progress bar ───────────────────────────────── -->
+    <TextView
+        android:id="@+id/tvStepLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Step 1 of 4 — Fitness Goal"
+        android:textColor="@color/white_70"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="48dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/stepProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:max="4"
+        android:progress="1"
+        android:progressTint="@color/white"
+        android:progressBackgroundTint="@color/white_30"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@id/tvStepLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ── ViewFlipper — contains 4 step views ───────────────────────────── -->
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/stepProgress"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- ═══════════════════════════════════════════════════════
+             STEP 1 — Main Fitness Goal
+             ═══════════════════════════════════════════════════════ -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="💪 What is your main\nfitness goal?"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingMultiplier="1.1"
+                    android:layout_marginBottom="20dp" />
+
+                <!-- Strength -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card1_Strength"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:paddingStart="20dp" android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🏋️" android:textSize="20sp" android:gravity="center" />
+                        <LinearLayout android:layout_width="0dp"
+                            android:layout_height="wrap_content" android:layout_weight="1"
+                            android:orientation="vertical" android:layout_marginStart="14dp">
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Strength"
+                                android:textColor="@color/white" android:textSize="15sp"
+                                android:fontFamily="sans-serif-medium" />
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Build muscle &amp; power"
+                                android:textColor="@color/white_70" android:textSize="11sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Endurance -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card1_Endurance"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:paddingStart="20dp" android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🏃" android:textSize="20sp" android:gravity="center" />
+                        <LinearLayout android:layout_width="0dp"
+                            android:layout_height="wrap_content" android:layout_weight="1"
+                            android:orientation="vertical" android:layout_marginStart="14dp">
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Endurance"
+                                android:textColor="@color/white" android:textSize="15sp"
+                                android:fontFamily="sans-serif-medium" />
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Improve stamina &amp; cardio"
+                                android:textColor="@color/white_70" android:textSize="11sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Weight Loss -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card1_WeightLoss"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:paddingStart="20dp" android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🔥" android:textSize="20sp" android:gravity="center" />
+                        <LinearLayout android:layout_width="0dp"
+                            android:layout_height="wrap_content" android:layout_weight="1"
+                            android:orientation="vertical" android:layout_marginStart="14dp">
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Weight Loss"
+                                android:textColor="@color/white" android:textSize="15sp"
+                                android:fontFamily="sans-serif-medium" />
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Burn fat &amp; get lean"
+                                android:textColor="@color/white_70" android:textSize="11sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Cardio Mix -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card1_Cardio"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:paddingStart="20dp" android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="❤️" android:textSize="20sp" android:gravity="center" />
+                        <LinearLayout android:layout_width="0dp"
+                            android:layout_height="wrap_content" android:layout_weight="1"
+                            android:orientation="vertical" android:layout_marginStart="14dp">
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Cardio Mix"
+                                android:textColor="@color/white" android:textSize="15sp"
+                                android:fontFamily="sans-serif-medium" />
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Heart health &amp; fitness"
+                                android:textColor="@color/white_70" android:textSize="11sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Flexibility -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card1_Flex"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:paddingStart="20dp" android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🧘" android:textSize="20sp" android:gravity="center" />
+                        <LinearLayout android:layout_width="0dp"
+                            android:layout_height="wrap_content" android:layout_weight="1"
+                            android:orientation="vertical" android:layout_marginStart="14dp">
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Flexibility"
+                                android:textColor="@color/white" android:textSize="15sp"
+                                android:fontFamily="sans-serif-medium" />
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Stretch, balance &amp; mobility"
+                                android:textColor="@color/white_70" android:textSize="11sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- ═══════════════════════════════════════════════════════
+             STEP 2 — Fitness Level
+             ═══════════════════════════════════════════════════════ -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🏅 What is your current\nfitness level?"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingMultiplier="1.1"
+                    android:layout_marginBottom="20dp" />
+
+                <!-- Beginner -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card2_Beginner"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:paddingStart="20dp" android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🌱" android:textSize="20sp" android:gravity="center" />
+                        <LinearLayout android:layout_width="0dp"
+                            android:layout_height="wrap_content" android:layout_weight="1"
+                            android:orientation="vertical" android:layout_marginStart="14dp">
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Beginner"
+                                android:textColor="@color/white" android:textSize="15sp"
+                                android:fontFamily="sans-serif-medium" />
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="I'm just getting started"
+                                android:textColor="@color/white_70" android:textSize="11sp" />
+                        </LinearLayout>
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="10 reps"
+                            android:textColor="@color/purple_light" android:textSize="11sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Intermediate -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card2_Intermediate"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:paddingStart="20dp" android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="⚡" android:textSize="20sp" android:gravity="center" />
+                        <LinearLayout android:layout_width="0dp"
+                            android:layout_height="wrap_content" android:layout_weight="1"
+                            android:orientation="vertical" android:layout_marginStart="14dp">
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Intermediate"
+                                android:textColor="@color/white" android:textSize="15sp"
+                                android:fontFamily="sans-serif-medium" />
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="I work out a few times a week"
+                                android:textColor="@color/white_70" android:textSize="11sp" />
+                        </LinearLayout>
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="25 reps"
+                            android:textColor="@color/purple_light" android:textSize="11sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Advanced -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card2_Advanced"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:paddingStart="20dp" android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🔥" android:textSize="20sp" android:gravity="center" />
+                        <LinearLayout android:layout_width="0dp"
+                            android:layout_height="wrap_content" android:layout_weight="1"
+                            android:orientation="vertical" android:layout_marginStart="14dp">
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:text="Advanced"
+                                android:textColor="@color/white" android:textSize="15sp"
+                                android:fontFamily="sans-serif-medium" />
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="I train hard, every day"
+                                android:textColor="@color/white_70" android:textSize="11sp" />
+                        </LinearLayout>
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="50 reps"
+                            android:textColor="@color/purple_light" android:textSize="11sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- ═══════════════════════════════════════════════════════
+             STEP 3 — Workout Frequency
+             ═══════════════════════════════════════════════════════ -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📅 How often do you\nwork out per week?"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingMultiplier="1.1"
+                    android:layout_marginBottom="20dp" />
+
+                <androidx.cardview.widget.CardView android:id="@+id/card3_1_2"
+                    android:layout_width="match_parent" android:layout_height="58dp"
+                    android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🔰" android:textSize="20sp" android:gravity="center" />
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="1-2 days / week"
+                            android:textColor="@color/white" android:textSize="15sp"
+                            android:layout_marginStart="14dp" android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView android:id="@+id/card3_3_4"
+                    android:layout_width="match_parent" android:layout_height="58dp"
+                    android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="💪" android:textSize="20sp" android:gravity="center" />
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="3-4 days / week"
+                            android:textColor="@color/white" android:textSize="15sp"
+                            android:layout_marginStart="14dp" android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView android:id="@+id/card3_5plus"
+                    android:layout_width="match_parent" android:layout_height="58dp"
+                    android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🚀" android:textSize="20sp" android:gravity="center" />
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="5+ days / week"
+                            android:textColor="@color/white" android:textSize="15sp"
+                            android:layout_marginStart="14dp" android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView android:id="@+id/card3_Daily"
+                    android:layout_width="match_parent" android:layout_height="58dp"
+                    android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🔥" android:textSize="20sp" android:gravity="center" />
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="Every single day"
+                            android:textColor="@color/white" android:textSize="15sp"
+                            android:layout_marginStart="14dp" android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- ═══════════════════════════════════════════════════════
+             STEP 4 — Motivation
+             ═══════════════════════════════════════════════════════ -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎯 What motivates\nyou the most?"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:lineSpacingMultiplier="1.1"
+                    android:layout_marginBottom="20dp" />
+
+                <androidx.cardview.widget.CardView android:id="@+id/card4_LookBetter"
+                    android:layout_width="match_parent" android:layout_height="58dp"
+                    android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="✨" android:textSize="20sp" android:gravity="center" />
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="Look Better"
+                            android:textColor="@color/white" android:textSize="15sp"
+                            android:layout_marginStart="14dp" android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView android:id="@+id/card4_FeeHealthy"
+                    android:layout_width="match_parent" android:layout_height="58dp"
+                    android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="❤️" android:textSize="20sp" android:gravity="center" />
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="Feel Healthier"
+                            android:textColor="@color/white" android:textSize="15sp"
+                            android:layout_marginStart="14dp" android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView android:id="@+id/card4_Discipline"
+                    android:layout_width="match_parent" android:layout_height="58dp"
+                    android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🧘" android:textSize="20sp" android:gravity="center" />
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="Build Discipline"
+                            android:textColor="@color/white" android:textSize="15sp"
+                            android:layout_marginStart="14dp" android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView android:id="@+id/card4_Compete"
+                    android:layout_width="match_parent" android:layout_height="58dp"
+                    android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="🏆" android:textSize="20sp" android:gravity="center" />
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="Compete &amp; Win"
+                            android:textColor="@color/white" android:textSize="15sp"
+                            android:layout_marginStart="14dp" android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView android:id="@+id/card4_Stress"
+                    android:layout_width="match_parent" android:layout_height="58dp"
+                    android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
+                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
+                        <TextView android:layout_width="28dp" android:layout_height="28dp"
+                            android:text="😌" android:textSize="20sp" android:gravity="center" />
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="Reduce Stress"
+                            android:textColor="@color/white" android:textSize="15sp"
+                            android:layout_marginStart="14dp" android:fontFamily="sans-serif-medium" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </ViewFlipper>
+    <!-- END ViewFlipper -->
+
+    <!-- ── Back button (hidden on step 1) ───────────────────────────────── -->
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="← Back"
+        android:textColor="@color/white_70"
+        android:textSize="13sp"
+        android:background="@android:color/transparent"
+        android:stateListAnimator="@null"
+        android:visibility="gone"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- ── Next / Finish button ──────────────────────────────────────────── -->
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:text="Next →"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:background="@drawable/bg_button_gradient"
+        android:stateListAnimator="@null"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ── Primary Palette — Deep Purple / Blue ───────────────────────────── -->
+    <color name="purple_deep">#0D0920</color>    <!-- Darkest bg -->
+    <color name="purple_dark">#15103A</color>    <!-- Card bg -->
+    <color name="purple_mid">#2D1B69</color>     <!-- Mid accent -->
+    <color name="purple_light">#9B59FF</color>   <!-- Neon purple highlight -->
+    <color name="blue_accent">#5B6CF5</color>    <!-- Secondary accent -->
+    <color name="blue_deep">#0C1F5F</color>      <!-- Deep blue for gradient -->
+
+    <!-- ── Text & UI helpers ──────────────────────────────────────────────── -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>     <!-- 70% alpha white -->
+    <color name="white_30">#4DFFFFFF</color>     <!-- 30% alpha white -->
+
+    <!-- ── Card states ────────────────────────────────────────────────────── -->
+    <color name="card_default">#26FFFFFF</color> <!-- Frosted glass — unselected -->
+    <color name="card_selected">#663B2ADE</color><!-- Purple highlight — selected -->
+
+    <!-- ── Blocked state ──────────────────────────────────────────────────── -->
+    <color name="red_accent">#E53935</color>
+    <color name="red_deep">#4A0000</color>
+
+    <!-- ── Splash — Neon Blue / Charcoal palette ─────────────────────────── -->
+    <color name="neon_blue">#4FC3FF</color>
+    <color name="charcoal_deep">#1A1C2E</color>
+
+    <!-- ── Status bar / Nav bar ───────────────────────────────────────────── -->
+    <color name="statusBarColor">#1A1C2E</color>
+    <color name="navBarColor">#1A1C2E</color>
+
+    <!-- Theme primaries (required by Material theme) -->
+    <color name="colorPrimary">@color/purple_mid</color>
+    <color name="colorPrimaryVariant">@color/purple_deep</color>
+    <color name="colorOnPrimary">@color/white</color>
+    <color name="colorSecondary">@color/blue_accent</color>
+    <color name="colorOnSecondary">@color/white</color>
+    <color name="colorSurface">@color/purple_dark</color>
+    <color name="colorOnSurface">@color/white</color>
+    <color name="colorBackground">@color/purple_deep</color>
+    <color name="colorOnBackground">@color/white</color>
+
+</resources>

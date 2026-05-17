@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pill-shaped button background with purple gradient -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:startColor="#7C4DFF"
+        android:endColor="#448AFF"
+        android:angle="0"
+        android:type="linear" />
+    <corners android:radius="30dp" />
+</shape>

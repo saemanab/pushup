@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "578844045184",
+    "project_id": "push-up-time",
+    "storage_bucket": "push-up-time.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578844045184:android:7ce77d661da1f0268ddb65",
+        "android_client_info": {
+          "package_name": "com.pushupfit.locker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs_jpxEq-aFtflEazQNJD6KzK_XqnSbB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

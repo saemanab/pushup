@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ic_pushup_figure.xml  —  Professional push-up silhouette
+    Single closed path tracing the full body outline (side view, facing right).
+    Viewport 320 × 170 · Ground y ≈ 152
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp"
+    android:height="170dp"
+    android:viewportWidth="320"
+    android:viewportHeight="170">
+
+    <!--
+        Full silhouette — one continuous closed path.
+
+        Starting at the TOP OF THE HEAD, going CLOCKWISE:
+          1. Down the face / chin / throat
+          2. Across the front-shoulder to the bent arm
+          3. Down forearm → hand → fingers (ground level)
+          4. LEFT along the underside of the body back to the toes
+          5. UP the back of the shin / thigh / spine / neck
+          6. Back to the crown of the head → Z
+    -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M 262,30
+            C 276,30 287,41 287,55
+            C 287,65 281,73 273,77
+            C 267,80 261,80 257,78
+            C 253,84 251,90 251,95
+            C 252,100 254,105 257,112
+            C 260,120 261,130 258,139
+            C 255,146 249,151 243,153
+            C 236,155 228,155 222,153
+            C 208,152 192,150 175,148
+            C 158,146 140,144 122,143
+            C 104,142 86,142 68,144
+            C 52,146 36,150 22,154
+            C 16,155 12,154 11,150
+            C 10,146 14,142 22,139
+            C 36,135 52,132 68,130
+            C 86,128 104,126 122,124
+            C 140,122 158,120 172,116
+            C 188,112 202,106 214,100
+            C 224,95 232,90 238,84
+            C 240,80 240,76 238,72
+            C 236,68 232,66 228,68
+            C 224,70 222,74 224,78
+            C 225,82 229,84 233,83
+            C 238,82 241,78 240,73
+            C 247,69 252,62 252,55
+            C 252,41 243,30 262,30
+            Z
+        " />
+
+    <!--
+        HEAD — clean separate circle for a perfectly round head.
+        Center (262, 55), radius 25 drawn as two arcs.
+    -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M 237,55
+            A 25,25 0 1 0 287,55
+            A 25,25 0 1 0 237,55
+            Z
+        " />
+
+    <!--
+        BENT ARM — visible arm with clear elbow angle.
+        Upper arm: shoulder (248,92) → elbow (258,115)
+        Forearm:   elbow (258,115) → wrist/hand (244,148)
+    -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M 244,90
+            C 250,92 256,98 259,108
+            C 262,118 261,130 256,140
+            C 252,148 245,153 238,153
+            C 230,153 225,149 224,144
+            C 232,146 240,145 245,139
+            C 250,133 252,124 250,115
+            C 248,106 244,98 242,92
+            C 242,90 243,89 244,90
+            Z
+        " />
+
+    <!--
+        BACK LEG — slightly offset leg for depth/professionalism.
+        Runs parallel to main leg but 6px lower.
+    -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="
+            M 170,122
+            C 150,126 128,128 106,130
+            C 86,132 66,134 48,138
+            C 36,141 22,145 14,149
+            C 18,153 26,154 36,152
+            C 52,149 68,146 86,144
+            C 106,142 126,140 146,138
+            C 164,136 180,132 194,126
+            L 170,122
+            Z
+        " />
+
+    <!--
+        FOOT — clear toe/ball-of-foot shape at ground contact (left side).
+    -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M 14,149
+            C 10,148 8,144 10,141
+            C 12,138 18,137 24,139
+            C 20,142 16,146 14,149
+            Z
+        " />
+
+</vector>

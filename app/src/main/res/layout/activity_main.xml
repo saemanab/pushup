@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A1A">
+
+    <!-- LAYER 1: Camera Preview -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/cameraPreview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- LAYER 2: Skeleton / Pose Overlay (drawn on top of camera feed) -->
+    <com.pushupfit.locker.PoseOverlayView
+        android:id="@+id/poseOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:visibility="gone" />
+
+    <!-- LAYER 3: Dark Background (shown when camera is off) -->
+    <View
+        android:id="@+id/viewDarkBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient" />
+
+    <!-- LAYER 3: Top Scrim -->
+    <View
+        android:id="@+id/viewTopScrim"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/scrim_top"
+        android:visibility="gone" />
+
+    <!-- LAYER 4: Bottom Scrim -->
+    <View
+        android:id="@+id/viewBottomScrim"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/scrim_bottom"
+        android:visibility="gone" />
+
+    <!-- ================= WORKOUT LAYOUT ================= -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layoutWorkout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- ── SCROLLABLE CONTENT ───────────────────────────────────────── -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollContent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnDayStreak"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="52dp"
+                android:paddingBottom="16dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <!-- ── TOP BAR: Goal + Settings ──────────────────────── -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="22dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Good Day! 💪"
+                            android:textColor="#AAFFFFFF"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvGoalLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Goal: 20 Reps"
+                            android:textColor="#FFFFFFFF"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:fontFamily="sans-serif-black" />
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/btnSettings"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:src="@drawable/ic_settings"
+                        android:background="@drawable/bg_stat_card"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="Settings"
+                        android:padding="10dp" />
+                </LinearLayout>
+
+                <!-- ── STATISTICS CARD ────────────────────────────────── -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#1E1550">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <!-- Card header row -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="14dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Statistics"
+                                android:textColor="#FFFFFFFF"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="This Week"
+                                android:textColor="#9B59FF"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Today's progress label + percentage -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="5dp">
+
+                            <TextView
+                                android:id="@+id/tvDailyProgressLabel"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Today's Progress"
+                                android:textColor="#AABB86FF"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tvDailyProgressPct"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textColor="#9B59FF"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- Today's thin progress bar -->
+                        <ProgressBar
+                            android:id="@+id/dailyProgressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:max="100"
+                            android:progress="0"
+                            android:progressTint="#9B59FF"
+                            android:progressBackgroundTint="#22FFFFFF"
+                            android:layout_marginBottom="22dp" />
+
+                        <!-- WEEKLY BAR CHART -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="110dp"
+                            android:orientation="horizontal"
+                            android:gravity="bottom"
+                            android:layout_marginBottom="8dp">
+
+                            <!-- MON -->
+                            <LinearLayout android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal">
+                                <View android:id="@+id/barMon"
+                                    android:layout_width="20dp" android:layout_height="38dp"
+                                    android:background="@drawable/bg_bar_default" />
+                            </LinearLayout>
+
+                            <!-- TUE -->
+                            <LinearLayout android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal">
+                                <View android:id="@+id/barTue"
+                                    android:layout_width="20dp" android:layout_height="60dp"
+                                    android:background="@drawable/bg_bar_default" />
+                            </LinearLayout>
+
+                            <!-- WED -->
+                            <LinearLayout android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal">
+                                <View android:id="@+id/barWed"
+                                    android:layout_width="20dp" android:layout_height="44dp"
+                                    android:background="@drawable/bg_bar_default" />
+                            </LinearLayout>
+
+                            <!-- THU (today placeholder — highlighted in Java) -->
+                            <LinearLayout android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal">
+                                <View android:id="@+id/barThu"
+                                    android:layout_width="20dp" android:layout_height="80dp"
+                                    android:background="@drawable/bg_bar_default" />
+                            </LinearLayout>
+
+                            <!-- FRI -->
+                            <LinearLayout android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal">
+                                <View android:id="@+id/barFri"
+                                    android:layout_width="20dp" android:layout_height="32dp"
+                                    android:background="@drawable/bg_bar_default" />
+                            </LinearLayout>
+
+                            <!-- SAT -->
+                            <LinearLayout android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal">
+                                <View android:id="@+id/barSat"
+                                    android:layout_width="20dp" android:layout_height="22dp"
+                                    android:background="@drawable/bg_bar_default" />
+                            </LinearLayout>
+
+                            <!-- SUN -->
+                            <LinearLayout android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal">
+                                <View android:id="@+id/barSun"
+                                    android:layout_width="20dp" android:layout_height="16dp"
+                                    android:background="@drawable/bg_bar_default" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Day labels row -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView android:id="@+id/labelMon"
+                                android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:text="Mon"
+                                android:textColor="#66FFFFFF" android:textSize="10sp"
+                                android:gravity="center" />
+                            <TextView android:id="@+id/labelTue"
+                                android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:text="Tue"
+                                android:textColor="#66FFFFFF" android:textSize="10sp"
+                                android:gravity="center" />
+                            <TextView android:id="@+id/labelWed"
+                                android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:text="Wed"
+                                android:textColor="#66FFFFFF" android:textSize="10sp"
+                                android:gravity="center" />
+                            <TextView android:id="@+id/labelThu"
+                                android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:text="Thu"
+                                android:textColor="#66FFFFFF" android:textSize="10sp"
+                                android:gravity="center" />
+                            <TextView android:id="@+id/labelFri"
+                                android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:text="Fri"
+                                android:textColor="#66FFFFFF" android:textSize="10sp"
+                                android:gravity="center" />
+                            <TextView android:id="@+id/labelSat"
+                                android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:text="Sat"
+                                android:textColor="#66FFFFFF" android:textSize="10sp"
+                                android:gravity="center" />
+                            <TextView android:id="@+id/labelSun"
+                                android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:text="Sun"
+                                android:textColor="#66FFFFFF" android:textSize="10sp"
+                                android:gravity="center" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- ── STATS ROW: Time + Reps ──────────────────────────── -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <!-- Time card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#1E1550">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="18dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⏱ TIME"
+                                android:textColor="#9B59FF"
+                                android:textSize="10sp"
+                                android:letterSpacing="0.12"
+                                android:layout_marginBottom="6dp" />
+
+                            <TextView
+                                android:id="@+id/tvTimer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="00:00"
+                                android:textColor="#FFFFFFFF"
+                                android:textSize="34sp"
+                                android:textStyle="bold"
+                                android:fontFamily="sans-serif-black" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="minutes"
+                                android:textColor="#66FFFFFF"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Reps card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#1E1550">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="18dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="💪 REPS"
+                                android:textColor="#9B59FF"
+                                android:textSize="10sp"
+                                android:letterSpacing="0.12"
+                                android:layout_marginBottom="6dp" />
+
+                            <TextView
+                                android:id="@+id/tvRepCounter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="#FFFFFFFF"
+                                android:textSize="34sp"
+                                android:textStyle="bold"
+                                android:fontFamily="sans-serif-black" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="pushups"
+                                android:textColor="#66FFFFFF"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <!-- Elbow debug + session bar (visible during active session) -->
+                <TextView
+                    android:id="@+id/tvAngleDebug"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Elbow: —°"
+                    android:textColor="#CCBB86FF"
+                    android:textSize="13sp"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+
+                <ProgressBar
+                    android:id="@+id/circularProgress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:max="20"
+                    android:progress="0"
+                    android:progressTint="#5B6CF5"
+                    android:progressBackgroundTint="#22FFFFFF"
+                    android:layout_marginTop="6dp"
+                    android:visibility="gone" />
+
+                <!-- ── BREAK TIMER CARD ─────────────────────────────── -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardBreakTimer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="18dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#1E1550">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="18dp">
+
+                        <!-- Icon circle: purple glow matching home icon pills -->
+                        <ImageView
+                            android:id="@+id/ivBreakIcon"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:src="@drawable/ic_sessions"
+                            android:background="@drawable/bg_icon_glow"
+                            android:padding="10dp"
+                            app:tint="#FFFFFF"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <!-- Labels -->
+                        <TextView
+                            android:id="@+id/tvBreakLabel"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:text="☕ BREAK TIME"
+                            android:textColor="#9B59FF"
+                            android:textSize="10sp"
+                            android:letterSpacing="0.12"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/ivBreakIcon"
+                            app:layout_constraintEnd_toStartOf="@id/tvBreakCountdown"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvBreakSubtitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:text="Rest up — workout resumes soon"
+                            android:textColor="#B3FFFFFF"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toEndOf="@id/ivBreakIcon"
+                            app:layout_constraintEnd_toStartOf="@id/tvBreakCountdown"
+                            app:layout_constraintTop_toBottomOf="@id/tvBreakLabel"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <!-- Countdown — neon purple matching REPS/TIME value style -->
+                        <TextView
+                            android:id="@+id/tvBreakCountdown"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15:00"
+                            android:textColor="#FFFFFF"
+                            android:textSize="28sp"
+                            android:textStyle="bold"
+                            android:fontFamily="sans-serif-black"
+                            android:layout_marginEnd="4dp"
+                            app:layout_constraintEnd_toStartOf="@id/btnCancelBreak"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                        <!-- Cancel — bright enough to see on dark violet -->
+                        <TextView
+                            android:id="@+id/btnCancelBreak"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✕"
+                            android:textColor="#66FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:padding="8dp"
+                            android:background="?android:attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- Hidden ghost views (still referenced by Java, invisible) -->
+        <TextView android:id="@+id/tvRepsRemaining"
+            android:layout_width="0dp" android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <TextView android:id="@+id/tvStatus"
+            android:layout_width="0dp" android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- ── SESSION HUD (shown during active session, hides home cards) ── -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutSessionHud"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnStartSession"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Compact timer chip (top centre) -->
+            <TextView
+                android:id="@+id/tvHudTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏱  00:00"
+                android:textColor="#FFFFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_stat_card"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="52dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Giant rep number (centred) -->
+            <TextView
+                android:id="@+id/tvHudReps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#FFFFFFFF"
+                android:textSize="120sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-black"
+                android:shadowColor="#CC000000"
+                android:shadowDx="0"
+                android:shadowDy="4"
+                android:shadowRadius="16"
+                app:layout_constraintTop_toBottomOf="@id/tvHudTimer"
+                app:layout_constraintBottom_toTopOf="@id/tvHudAngle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_bias="0.4" />
+
+            <!-- Elbow angle hint -->
+            <TextView
+                android:id="@+id/tvHudAngle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elbow: —°"
+                android:textColor="#AABB86FF"
+                android:textSize="13sp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@id/hudProgressBar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Session progress bar -->
+            <ProgressBar
+                android:id="@+id/hudProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:max="20"
+                android:progress="0"
+                android:progressTint="#9B59FF"
+                android:progressBackgroundTint="#33FFFFFF"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toTopOf="@id/layoutWorkoutControls"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Camera Warmup Hint (Image Style) -->
+            <LinearLayout
+                android:id="@+id/tvCameraWarmupHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.42">
+
+                <ImageView
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:src="@drawable/ic_baseline_person_24"
+                    android:layout_marginBottom="12dp"
+                    app:tint="#D9D9D9" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Position yourself in frame"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:shadowColor="#99000000"
+                    android:shadowDx="1"
+                    android:shadowDy="2"
+                    android:shadowRadius="4"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Make sure your full body is visible"
+                    android:textColor="#B3B3B3"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:letterSpacing="0.04"
+                    android:shadowColor="#99000000"
+                    android:shadowDx="1"
+                    android:shadowDy="2"
+                    android:shadowRadius="4" />
+            </LinearLayout>
+
+            <!-- ── SESSION ACTIVE CONTROLS (X and Pause/Resume) ── -->
+            <LinearLayout
+                android:id="@+id/layoutWorkoutControls"
+                android:layout_width="0dp"
+                android:layout_height="58dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCancelWorkout"
+                    android:layout_width="58dp"
+                    android:layout_height="match_parent"
+                    app:cornerRadius="29dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    app:icon="@drawable/ic_close"
+                    app:iconTint="#FFFFFFFF"
+                    app:iconSize="24dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:backgroundTint="#80000000"
+                    android:layout_marginEnd="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPauseWorkout"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="PAUSE"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="16sp"
+                    android:letterSpacing="0.05"
+                    android:textStyle="bold"
+                    app:cornerRadius="20dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    app:icon="@drawable/ic_pause"
+                    app:iconTint="#FFFFFFFF"
+                    app:iconSize="20dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:backgroundTint="#80000000" />
+            </LinearLayout>
+
+>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- ── DAY STREAK PILL ─────────────────────────────────── -->
+        <LinearLayout
+            android:id="@+id/btnDayStreak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_streak_button"
+            android:paddingStart="12dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_marginBottom="26dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toTopOf="@id/btnStartSession"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_fire"
+                app:tint="#FFC107"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/tvDayStreakLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 DAY STREAK"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+
+        <!-- ── START SESSION BUTTON (pinned to bottom) ──────────────────── -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStartSession"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:text="START SESSION"
+            android:textColor="#FFFFFFFF"
+            android:textSize="18sp"
+            android:letterSpacing="0.05"
+            android:textStyle="bold"
+            app:cornerRadius="18dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:icon="@drawable/ic_camera"
+            app:iconTint="#FFFFFFFF"
+            app:iconSize="24dp"
+            app:iconGravity="textStart"
+            app:iconPadding="10dp"
+            app:backgroundTint="#1E1550"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@id/tvBlockedAppsCount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- ── BLOCKED APPS COUNT ───────────────────────────────────────── -->
+        <TextView
+            android:id="@+id/tvBlockedAppsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔒  0 apps will be blocked"
+            android:textColor="#AA9B59FF"
+            android:textSize="12sp"
+            android:letterSpacing="0.04"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!-- ================= BLOCKED LAYOUT ================= -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layoutBlocked"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_blocked_gradient"
+        android:visibility="gone">
+
+        <!-- Lock icon -->
+        <TextView
+            android:id="@+id/tvLockIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔒"
+            android:textSize="72sp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvBlockedMessage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Blocked message -->
+        <TextView
+            android:id="@+id/tvBlockedMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="🔒 Focus on your workout!\nAll other apps are locked until you complete your push-up goal."
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.3"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Unlock button -->
+        <Button
+            android:id="@+id/btnUnlock"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:text="🔓 Unlock Apps"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/bg_button_gradient"
+            android:stateListAnimator="@null"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="28dp"
+            app:layout_constraintTop_toBottomOf="@id/tvBlockedMessage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Return to workout button -->
+        <Button
+            android:id="@+id/btnTimeRemaining"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="💪 Return to Workout"
+            android:textColor="#AAFFFFFF"
+            android:textSize="14sp"
+            android:background="@android:color/transparent"
+            android:stateListAnimator="@null"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/btnUnlock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

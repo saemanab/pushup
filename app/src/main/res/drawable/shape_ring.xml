@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Circular ring shape for the progress indicator track -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@android:color/transparent" />
+    <stroke android:width="6dp" android:color="#3D2B7A" />
+    <size android:width="160dp" android:height="160dp" />
+</shape>

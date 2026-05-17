@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Blocked screen background: dark red → dark purple -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="#3D0000"
+        android:centerColor="#1A0A2E"
+        android:endColor="#1A0A3A"
+        android:angle="160"
+        android:type="linear" />
+</shape>

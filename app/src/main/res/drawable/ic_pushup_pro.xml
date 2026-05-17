@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ic_pushup_pro.xml
+    Professional minimal push-up icon — pure stroke style.
+    Side view, person in push-up DOWN position facing right.
+
+    Design: thick rounded-cap bone lines + joint dots + head circle.
+    All white. Viewport 96 × 60.
+
+    Joint coordinates:
+      HEAD   centre (78, 11)  r=9
+      SHOULDER               (68, 22)
+      ELBOW                  (73, 40)   ← arm bent DOWN and slightly forward
+      HAND   (ground y=52)  (62, 52)
+      HIP                    (28, 30)
+      KNEE                   (14, 42)
+      FOOT   (ground y=52)   (6,  52)
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="192dp"
+    android:height="120dp"
+    android:viewportWidth="96"
+    android:viewportHeight="60">
+
+    <!-- ══  BACK LEG (far side, 45% opacity for depth) ══════════════════ -->
+    <path
+        android:strokeColor="#73FFFFFF"
+        android:strokeWidth="3.8"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 30,31 L 17,43 L 10,53" />
+
+    <!-- ══  BACK ARM (far side, 45% opacity) ═══════════════════════════ -->
+    <path
+        android:strokeColor="#73FFFFFF"
+        android:strokeWidth="3.8"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 66,23 L 71,40 L 60,53" />
+
+    <!-- ══  GROUND SHADOW  (very subtle) ════════════════════════════════ -->
+    <path
+        android:strokeColor="#33FFFFFF"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 4,55 L 68,55" />
+
+    <!-- ══  SPINE / TORSO ════════════════════════════════════════════════ -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 68,22 L 28,30" />
+
+    <!-- ══  NECK ══════════════════════════════════════════════════════════ -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 68,22 L 72,15" />
+
+    <!-- ══  UPPER ARM ═════════════════════════════════════════════════════ -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 68,22 L 73,40" />
+
+    <!-- ══  FOREARM ═══════════════════════════════════════════════════════ -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 73,40 L 62,52" />
+
+    <!-- ══  THIGH ══════════════════════════════════════════════════════════ -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 28,30 L 14,42" />
+
+    <!-- ══  SHIN ═══════════════════════════════════════════════════════════ -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M 14,42 L 6,52" />
+
+    <!-- ══  HEAD ═══════════════════════════════════════════════════════════ -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M 69,11 A 9,9 0 1 0 87,11 A 9,9 0 1 0 69,11 Z" />
+
+    <!-- ══  JOINTS (shoulder, elbow, hand, hip, knee, foot) ══════════════ -->
+    <!-- Shoulder -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M 64,22 A 3.2,3.2 0 1 0 72,22 A 3.2,3.2 0 1 0 64,22 Z" />
+    <!-- Elbow -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M 69,40 A 3,3 0 1 0 77,40 A 3,3 0 1 0 69,40 Z" />
+    <!-- Hand -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M 58,52 A 2.8,2.8 0 1 0 66,52 A 2.8,2.8 0 1 0 58,52 Z" />
+    <!-- Hip -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M 24,30 A 3,3 0 1 0 32,30 A 3,3 0 1 0 24,30 Z" />
+    <!-- Knee -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M 10,42 A 2.8,2.8 0 1 0 18,42 A 2.8,2.8 0 1 0 10,42 Z" />
+    <!-- Foot -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M 2,52 A 2.8,2.8 0 1 0 10,52 A 2.8,2.8 0 1 0 2,52 Z" />
+
+</vector>

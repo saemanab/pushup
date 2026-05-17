@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">pushUp Time</string>
+    <string name="screen_quiz_title">Personalize Your Goal</string>
+    <string name="screen_quiz_subtitle">How many pushups can you do?</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_start">Start Session</string>
+    <string name="btn_pause">Pause Session</string>
+    <string name="status_analyzing">Status: Analyzing Form...</string>
+    <string name="blocked_message">🔒 Focus on your workout!\nAll other apps are locked until you
+        complete your pushup goal.</string>
+    <string name="calibrating">Calibrating Sensors…\nPreparing Your Plan</string>
+</resources>

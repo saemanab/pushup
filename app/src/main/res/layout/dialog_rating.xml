@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    dialog_rating.xml  —  Premium "Rate Your Experience" dialog.
+    Design: dark-violet glassmorphism, circular glowing star containers,
+            color-coded rating pill, matching app's premium aesthetic.
+-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_dialog_premium"
+        android:padding="28dp">
+
+        <!-- ── Glow icon (centred, amber star) ──────────────────── -->
+        <ImageView
+            android:id="@+id/ivRatingIcon"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_icon_glow"
+            android:padding="17dp"
+            android:src="@drawable/ic_star_yellow"
+            app:tint="#FFC107"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- ── Title ─────────────────────────────────────────────── -->
+        <TextView
+            android:id="@+id/tvRatingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Rate Your Experience"
+            android:textColor="#FFFFFF"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivRatingIcon" />
+
+        <!-- ── Subtitle ───────────────────────────────────────────── -->
+        <TextView
+            android:id="@+id/tvRatingDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp"
+            android:text="How would you rate your experience\nwith our app today?"
+            android:textColor="#B3FFFFFF"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRatingTitle" />
+
+        <!-- ── Stars tray (glass pill container) ─────────────────── -->
+        <LinearLayout
+            android:id="@+id/layoutStars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_stars_tray"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRatingDesc">
+
+            <!-- Star 1 -->
+            <FrameLayout
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_star_container_default"
+                android:id="@+id/containerStar1"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:id="@+id/star1"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_star_outline"
+                    android:contentDescription="1 star"
+                    android:importantForAccessibility="yes" />
+            </FrameLayout>
+
+            <!-- Star 2 -->
+            <FrameLayout
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_star_container_default"
+                android:id="@+id/containerStar2"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:id="@+id/star2"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_star_outline"
+                    android:contentDescription="2 stars"
+                    android:importantForAccessibility="yes" />
+            </FrameLayout>
+
+            <!-- Star 3 -->
+            <FrameLayout
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_star_container_default"
+                android:id="@+id/containerStar3"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:id="@+id/star3"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_star_outline"
+                    android:contentDescription="3 stars"
+                    android:importantForAccessibility="yes" />
+            </FrameLayout>
+
+            <!-- Star 4 -->
+            <FrameLayout
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_star_container_default"
+                android:id="@+id/containerStar4"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:id="@+id/star4"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_star_outline"
+                    android:contentDescription="4 stars"
+                    android:importantForAccessibility="yes" />
+            </FrameLayout>
+
+            <!-- Star 5 -->
+            <FrameLayout
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_star_container_default"
+                android:id="@+id/containerStar5"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:id="@+id/star5"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_star_outline"
+                    android:contentDescription="5 stars"
+                    android:importantForAccessibility="yes" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <!-- ── Dynamic rating label pill ─────────────────────────── -->
+        <TextView
+            android:id="@+id/tvRatingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text=""
+            android:textColor="#FFC107"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.02"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:background="@drawable/bg_rating_label_pill"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutStars" />
+
+        <!-- ── Optional feedback field ───────────────────────────── -->
+        <EditText
+            android:id="@+id/etFeedback"
+            android:layout_width="0dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_input_field"
+            android:gravity="top|start"
+            android:hint="Tell us more (optional)…"
+            android:textColorHint="#44FFFFFF"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:padding="14dp"
+            android:inputType="textMultiLine"
+            android:maxLines="4"
+            android:scrollbars="vertical"
+            android:visibility="gone"
+            android:importantForAutofill="no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRatingLabel" />
+
+        <!-- ── Submit button ──────────────────────────────────────── -->
+        <Button
+            android:id="@+id/btnSubmitRating"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_btn_purple"
+            android:elevation="6dp"
+            android:stateListAnimator="@null"
+            android:text="Submit Rating"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.03"
+            android:enabled="false"
+            android:alpha="0.40"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etFeedback" />
+
+        <!-- ── Not now ────────────────────────────────────────────── -->
+        <TextView
+            android:id="@+id/tvNotNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="2dp"
+            android:text="Not now"
+            android:textColor="#55FFFFFF"
+            android:textSize="13sp"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Dismiss rating dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSubmitRating"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

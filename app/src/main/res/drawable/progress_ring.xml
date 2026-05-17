@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    progress_ring.xml — Custom ProgressBar drawable for the workout rep counter.
+    • Background ring: dark purple track
+    • Progress ring: bright purple fill
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Track (background ring) -->
+    <item android:id="@android:id/background">
+        <shape android:shape="ring"
+            android:innerRadiusRatio="2.8"
+            android:thicknessRatio="12"
+            android:useLevel="false">
+            <solid android:color="#3D2B7A" />
+        </shape>
+    </item>
+
+    <!-- Progress fill (foreground ring) -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="ring"
+                android:innerRadiusRatio="2.8"
+                android:thicknessRatio="12"
+                android:useLevel="true">
+                <gradient
+                    android:startColor="#7C4DFF"
+                    android:endColor="#448AFF"
+                    android:type="sweep" />
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>
