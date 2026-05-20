@@ -22,7 +22,9 @@
     <color name="red_accent">#E53935</color>
     <color name="red_deep">#4A0000</color>
 
-    <!-- ── Splash — Neon Blue / Charcoal palette ─────────────────────────── -->
+    <!-- ── Splash — matches launcher icon gradient ───────────────────────── -->
+    <color name="splash_gradient_top">#00D2FF</color>
+    <color name="splash_gradient_bottom">#0078FF</color>
     <color name="neon_blue">#4FC3FF</color>
     <color name="charcoal_deep">#1A1C2E</color>
 

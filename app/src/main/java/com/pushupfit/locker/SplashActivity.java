@@ -10,16 +10,11 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 /**
- * SplashActivity — Professional Purple Splash with user's icon.
- *
- * Animation timeline:
- *   0 ms  → Icon badge drops in from above + fades        (650 ms)
- *   280ms → App name scales up + fades                    (550 ms)
- *   480ms → Tagline fades in                              (450 ms)
- *   620ms → Dots fade in                                  (350 ms)
- *   800ms → GET STARTED slides up + fades                 (500 ms)
+ * SplashActivity — first launch only. Shows the app icon on the same
+ * blue gradient as the launcher icon, with a short modern entrance animation.
  */
 public class SplashActivity extends AppCompatActivity {
 
@@ -27,68 +22,51 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ── Skip splash on every launch after the first install ───────────
         SessionManager session = new SessionManager(this);
         if (session.isSplashShown()) {
             navigateNext();
             return;
         }
 
+        int barColor = ContextCompat.getColor(this, R.color.splash_gradient_bottom);
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
-        getWindow().setStatusBarColor(0xFF1A1C2E);
-        getWindow().setNavigationBarColor(0xFF1A1C2E);
+        getWindow().setStatusBarColor(barColor);
+        getWindow().setNavigationBarColor(barColor);
 
         setContentView(R.layout.activity_splash);
 
-        View     iconBadge = findViewById(R.id.iconBadge);
-        TextView tvTitle   = findViewById(R.id.tvTitle);
+        View iconBadge = findViewById(R.id.iconBadge);
+        TextView tvTitle = findViewById(R.id.tvTitle);
         TextView tvTagline = findViewById(R.id.tvTagline);
-        TextView tvDots    = findViewById(R.id.tvDots);
-        TextView btnStart  = findViewById(R.id.btnGetStarted);
+        TextView btnStart = findViewById(R.id.btnGetStarted);
 
-        // ── Initial states ────────────────────────────────────────────────
-        iconBadge.setTranslationY(-60f);
-        tvTitle.setScaleX(0.90f);
-        tvTitle.setScaleY(0.90f);
-        btnStart.setTranslationY(55f);
+        iconBadge.setScaleX(0.88f);
+        iconBadge.setScaleY(0.88f);
+        btnStart.setTranslationY(40f);
 
-        // ── 1. Badge drops in from above ──────────────────────────────────
-        AnimatorSet badgeSet = new AnimatorSet();
-        badgeSet.playTogether(
-                ObjectAnimator.ofFloat(iconBadge, "alpha",        0f, 1f),
-                ObjectAnimator.ofFloat(iconBadge, "translationY", -60f, 0f));
-        badgeSet.setDuration(700);
-        badgeSet.setInterpolator(new OvershootInterpolator(1.2f));
+        AnimatorSet iconSet = new AnimatorSet();
+        iconSet.playTogether(
+                ObjectAnimator.ofFloat(iconBadge, "alpha", 0f, 1f),
+                ObjectAnimator.ofFloat(iconBadge, "scaleX", 0.88f, 1f),
+                ObjectAnimator.ofFloat(iconBadge, "scaleY", 0.88f, 1f));
+        iconSet.setDuration(650);
+        iconSet.setInterpolator(new OvershootInterpolator(1.05f));
 
-        // ── 2. Title scales up + fades ────────────────────────────────────
-        ObjectAnimator titleA  = anim(tvTitle, "alpha",  0f, 1f, 550, 280);
-        ObjectAnimator titleSX = anim(tvTitle, "scaleX", 0.90f, 1f, 550, 280);
-        ObjectAnimator titleSY = anim(tvTitle, "scaleY", 0.90f, 1f, 550, 280);
-        titleSX.setInterpolator(new OvershootInterpolator(1.3f));
-        titleSY.setInterpolator(new OvershootInterpolator(1.3f));
+        ObjectAnimator titleA = anim(tvTitle, "alpha", 0f, 1f, 450, 320);
+        ObjectAnimator tagA = anim(tvTagline, "alpha", 0f, 1f, 400, 480);
+        ObjectAnimator btnA = anim(btnStart, "alpha", 0f, 1f, 450, 620);
+        ObjectAnimator btnTY = anim(btnStart, "translationY", 40f, 0f, 450, 620);
+        btnTY.setInterpolator(new DecelerateInterpolator(1.4f));
 
-        // ── 3. Tagline fades ──────────────────────────────────────────────
-        ObjectAnimator tagA = anim(tvTagline, "alpha", 0f, 1f, 450, 480);
-
-        // ── 4. Dots fade ──────────────────────────────────────────────────
-        ObjectAnimator dotsA = anim(tvDots, "alpha", 0f, 1f, 350, 620);
-
-        // ── 5. Button slides up ───────────────────────────────────────────
-        ObjectAnimator btnA  = anim(btnStart, "alpha",        0f, 1f,  500, 800);
-        ObjectAnimator btnTY = anim(btnStart, "translationY", 55f, 0f, 500, 800);
-        btnTY.setInterpolator(new OvershootInterpolator(1.1f));
-
-        // ── Fire all ──────────────────────────────────────────────────────
         AnimatorSet master = new AnimatorSet();
-        master.playTogether(badgeSet, titleA, titleSX, titleSY, tagA, dotsA, btnA, btnTY);
+        master.playTogether(iconSet, titleA, tagA, btnA, btnTY);
         master.start();
 
-        // ── Button tap → navigate ─────────────────────────────────────────
         btnStart.setOnClickListener(v -> {
-            v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(80)
+            v.animate().scaleX(0.96f).scaleY(0.96f).setDuration(80)
                     .withEndAction(() ->
                             v.animate().scaleX(1f).scaleY(1f).setDuration(80)
                                     .withEndAction(this::navigateNext).start())
@@ -107,7 +85,6 @@ public class SplashActivity extends AppCompatActivity {
 
     private void navigateNext() {
         SessionManager session = new SessionManager(this);
-        // Mark splash as seen — never show it again after this first launch
         session.setSplashShown(true);
         Intent intent = session.isOnboardingDone()
                 ? new Intent(this, MainActivity.class)

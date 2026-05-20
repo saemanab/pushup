@@ -11,8 +11,11 @@
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
-    <!-- Splash — totally immersive, no status bar -->
+    <!-- Splash — icon gradient, immersive -->
     <style name="Theme.PushUpLocker.Splash" parent="Theme.PushUpLocker">
+        <item name="android:windowBackground">@drawable/bg_splash_gradient</item>
+        <item name="android:statusBarColor">@color/splash_gradient_bottom</item>
+        <item name="android:navigationBarColor">@color/splash_gradient_bottom</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
