@@ -6,95 +6,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_splash_gradient">
 
-    <!-- App icon as it appears on the home screen -->
-    <FrameLayout
+    <ImageView
         android:id="@+id/iconBadge"
-        android:layout_width="152dp"
-        android:layout_height="152dp"
+        android:layout_width="136dp"
+        android:layout_height="136dp"
         android:alpha="0"
-        android:elevation="8dp"
-        app:layout_constraintBottom_toTopOf="@id/tvTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.42"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:layout_marginBottom="28dp">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_splash_icon_glow" />
-
-        <ImageView
-            android:layout_width="136dp"
-            android:layout_height="136dp"
-            android:layout_gravity="center"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ic_launcher" />
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0"
-        android:fontFamily="sans-serif-black"
-        android:letterSpacing="0.06"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@id/tvTagline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iconBadge"
-        android:layout_marginBottom="8dp" />
-
-    <TextView
-        android:id="@+id/tvTagline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0"
-        android:fontFamily="sans-serif-medium"
-        android:letterSpacing="0.22"
-        android:text="EARN YOUR SCREEN TIME"
-        android:textColor="#CCFFFFFF"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        android:layout_marginBottom="48dp" />
-
-    <TextView
-        android:id="@+id/tvDots"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/btnGetStarted"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="56dp"
-        android:alpha="0"
-        android:background="@drawable/bg_btn_get_started"
-        android:clickable="true"
-        android:elevation="2dp"
-        android:focusable="true"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:letterSpacing="0.12"
-        android:text="GET STARTED"
-        android:textColor="@color/white"
-        android:textSize="15sp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

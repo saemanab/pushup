@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Quiz screen background: brighter purple gradient (matching reference image screen 1) -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <gradient
-        android:startColor="#6200EA"
-        android:centerColor="#7C4DFF"
-        android:endColor="#5500CC"
         android:angle="160"
+        android:centerColor="@color/blue_accent"
+        android:endColor="@color/splash_gradient_bottom"
+        android:startColor="@color/splash_gradient_top"
         android:type="linear" />
 </shape>

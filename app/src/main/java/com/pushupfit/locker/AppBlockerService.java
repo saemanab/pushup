@@ -201,7 +201,7 @@ public class AppBlockerService extends Service {
                 .setContentTitle("💪 PushUp Locker — Session Active")
                 .setContentText("Complete your pushup goal to unlock apps")
                 .setSmallIcon(R.drawable.ic_lock_small)
-                .setColor(0xFF9B59FF) // Premium purple accent
+                .setColor(0xFF0078FF)
                 .setContentIntent(pi)
                 .setOngoing(true)
                 .build();

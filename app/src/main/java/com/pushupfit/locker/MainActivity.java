@@ -375,7 +375,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         btnStartSession.setText("START");
-        btnStartSession.setCornerRadius((int) (32 * getResources().getDisplayMetrics().density));
+        btnStartSession.setCornerRadius((int) (50 * getResources().getDisplayMetrics().density));
         
         // Hide home screen cards, show warm-up HUD
         if (scrollContent      != null) scrollContent.setVisibility(View.GONE);
@@ -478,7 +478,7 @@ public class MainActivity extends AppCompatActivity
         btnStartSession.setVisibility(View.VISIBLE);
         if (layoutWorkoutControls != null) layoutWorkoutControls.setVisibility(View.GONE);
         btnStartSession.setText("START SESSION");
-        btnStartSession.setCornerRadius((int) (18 * getResources().getDisplayMetrics().density));
+        btnStartSession.setCornerRadius((int) (50 * getResources().getDisplayMetrics().density));
         
         if (layoutSessionHud != null) layoutSessionHud.setVisibility(View.GONE);
         if (scrollContent    != null) scrollContent.setVisibility(View.VISIBLE);
@@ -508,7 +508,7 @@ public class MainActivity extends AppCompatActivity
             btnPauseWorkout.setText("START");
             btnPauseWorkout.setIconResource(R.drawable.ic_play);
             // Use the app's dark violet theme color since they requested "keep the colors in my app" 
-            btnPauseWorkout.setBackgroundTintList(android.content.res.ColorStateList.valueOf(android.graphics.Color.parseColor("#1E1550")));
+            btnPauseWorkout.setBackgroundTintList(android.content.res.ColorStateList.valueOf(android.graphics.Color.parseColor("#004E9A")));
         }
         
         tvStatus.setText("Paused — tap Start to continue");
@@ -580,7 +580,7 @@ public class MainActivity extends AppCompatActivity
             if (layoutWorkoutControls != null) layoutWorkoutControls.setVisibility(View.GONE);
             
             btnStartSession.setText("START SESSION");
-            btnStartSession.setCornerRadius((int) (18 * getResources().getDisplayMetrics().density));
+            btnStartSession.setCornerRadius((int) (50 * getResources().getDisplayMetrics().density));
             
             if (layoutSessionHud != null) layoutSessionHud.setVisibility(View.GONE);
             if (scrollContent    != null) scrollContent.setVisibility(View.VISIBLE);
@@ -681,7 +681,7 @@ public class MainActivity extends AppCompatActivity
 
         // Label text + color per rating (1-5)
         final String[] labels     = { "", "\ud83d\ude15 Not great", "\ud83d\ude10 It was ok", "\ud83d\ude42 Pretty good", "\ud83d\ude00 Really liked it", "\ud83e\udd29 Loved it!" };
-        final int[]    labelColors = { 0, 0xFFE53935, 0xFFFF8F00, 0xFFFFC107, 0xFF66BB6A, 0xFF9B59FF };
+        final int[]    labelColors = { 0, 0xFFE53935, 0xFFFF8F00, 0xFFFFC107, 0xFF66BB6A, 0xFF00D2FF };
 
         // ── Star + container interaction ────────────────────────────────────────
         for (int i = 0; i < containers.length; i++) {
@@ -1121,7 +1121,7 @@ public class MainActivity extends AppCompatActivity
 
             if (i == todayIdx) {
                 bar.setBackgroundResource(R.drawable.bg_bar_active);
-                lbl.setTextColor(0xFF9B59FF);   // purple
+                lbl.setTextColor(0xFF00D2FF);   // purple
                 lbl.setTypeface(null, android.graphics.Typeface.BOLD);
             } else {
                 bar.setBackgroundResource(R.drawable.bg_bar_default);
@@ -1411,9 +1411,9 @@ public class MainActivity extends AppCompatActivity
         com.google.android.material.snackbar.Snackbar snack =
                 com.google.android.material.snackbar.Snackbar.make(rootView, msg,
                         com.google.android.material.snackbar.Snackbar.LENGTH_SHORT);
-        snack.setBackgroundTint(0xFF1C1B22);
+        snack.setBackgroundTint(0xFF003D7A);
         snack.setTextColor(0xFFFFFFFF);
-        snack.setActionTextColor(0xFF9B59FF);
+        snack.setActionTextColor(0xFF00D2FF);
         snack.getView().setElevation(16f);
         snack.show();
     }
@@ -1487,7 +1487,7 @@ public class MainActivity extends AppCompatActivity
         ch.enableVibration(true);
         ch.setVibrationPattern(new long[]{ 0, 150, 100, 150 });
         ch.enableLights(true);
-        ch.setLightColor(0xFF9B59FF);          // purple LED
+        ch.setLightColor(0xFF00D2FF);          // purple LED
         ch.setLockscreenVisibility(android.app.Notification.VISIBILITY_PUBLIC);
         nm.createNotificationChannel(ch);
 
@@ -1510,7 +1510,7 @@ public class MainActivity extends AppCompatActivity
                 .setContentTitle("💪 Break Over — Let's Go!")
                 .setContentText("Your rest is done. Time to crush more push-ups!")
                 // Dark violet background (app's purple_mid = #2D1B69) with colorize
-                .setColor(0xFF2D1B69)
+                .setColor(0xFF0078FF)
                 .setColorized(true)
                 // Expanded view with extra detail
                 .setStyle(new NotificationCompat.BigTextStyle()
@@ -1527,4 +1527,3 @@ public class MainActivity extends AppCompatActivity
         nm.notify(BREAK_NOTIF_ID, notif);
     }
 }
-

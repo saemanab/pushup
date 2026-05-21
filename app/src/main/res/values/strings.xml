@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">pushUp Time</string>
+    <string name="onboarding_welcome_title">Train. Unlock. Repeat.</string>
+    <string name="onboarding_welcome_subtitle">Do push-ups to earn screen time.\nYour apps stay locked until you hit your goal.</string>
+    <string name="onboarding_feature_1">Real-time rep counting with your camera</string>
+    <string name="onboarding_feature_2">Block distracting apps until you finish</string>
+    <string name="onboarding_feature_3">Earn screen time only after your workout</string>
+    <string name="onboarding_continue">Let\'s Go →</string>
+    <string name="onboarding_dumbbell_desc">Animated dumbbell</string>
     <string name="screen_quiz_title">Personalize Your Goal</string>
     <string name="screen_quiz_subtitle">How many pushups can you do?</string>
     <string name="btn_next">Next</string>

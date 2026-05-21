@@ -20,7 +20,7 @@
         android:textSize="12sp"
         android:gravity="center"
         android:fontFamily="sans-serif"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -87,7 +87,7 @@
                     android:layout_height="58dp"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp"
+                    app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -117,7 +117,7 @@
                     android:layout_height="58dp"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp"
+                    app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -147,7 +147,7 @@
                     android:layout_height="58dp"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp"
+                    app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -177,7 +177,7 @@
                     android:layout_height="58dp"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp"
+                    app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -207,7 +207,7 @@
                     android:layout_height="58dp"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp"
+                    app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -267,7 +267,7 @@
                     android:layout_height="58dp"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp"
+                    app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -300,7 +300,7 @@
                     android:layout_height="58dp"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp"
+                    app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -333,7 +333,7 @@
                     android:layout_height="58dp"
                     android:layout_marginBottom="10dp"
                     app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp"
+                    app:cardElevation="0dp"
                     app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -392,7 +392,7 @@
                 <androidx.cardview.widget.CardView android:id="@+id/card3_1_2"
                     android:layout_width="match_parent" android:layout_height="58dp"
                     android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    app:cardElevation="0dp" app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent" android:orientation="horizontal"
                         android:gravity="center_vertical" android:paddingStart="20dp"
@@ -409,7 +409,7 @@
                 <androidx.cardview.widget.CardView android:id="@+id/card3_3_4"
                     android:layout_width="match_parent" android:layout_height="58dp"
                     android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    app:cardElevation="0dp" app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent" android:orientation="horizontal"
                         android:gravity="center_vertical" android:paddingStart="20dp"
@@ -426,7 +426,7 @@
                 <androidx.cardview.widget.CardView android:id="@+id/card3_5plus"
                     android:layout_width="match_parent" android:layout_height="58dp"
                     android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    app:cardElevation="0dp" app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent" android:orientation="horizontal"
                         android:gravity="center_vertical" android:paddingStart="20dp"
@@ -443,7 +443,7 @@
                 <androidx.cardview.widget.CardView android:id="@+id/card3_Daily"
                     android:layout_width="match_parent" android:layout_height="58dp"
                     android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    app:cardElevation="0dp" app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent" android:orientation="horizontal"
                         android:gravity="center_vertical" android:paddingStart="20dp"
@@ -490,7 +490,7 @@
                 <androidx.cardview.widget.CardView android:id="@+id/card4_LookBetter"
                     android:layout_width="match_parent" android:layout_height="58dp"
                     android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    app:cardElevation="0dp" app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent" android:orientation="horizontal"
                         android:gravity="center_vertical" android:paddingStart="20dp"
@@ -507,7 +507,7 @@
                 <androidx.cardview.widget.CardView android:id="@+id/card4_FeeHealthy"
                     android:layout_width="match_parent" android:layout_height="58dp"
                     android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    app:cardElevation="0dp" app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent" android:orientation="horizontal"
                         android:gravity="center_vertical" android:paddingStart="20dp"
@@ -524,7 +524,7 @@
                 <androidx.cardview.widget.CardView android:id="@+id/card4_Discipline"
                     android:layout_width="match_parent" android:layout_height="58dp"
                     android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    app:cardElevation="0dp" app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent" android:orientation="horizontal"
                         android:gravity="center_vertical" android:paddingStart="20dp"
@@ -541,7 +541,7 @@
                 <androidx.cardview.widget.CardView android:id="@+id/card4_Compete"
                     android:layout_width="match_parent" android:layout_height="58dp"
                     android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    app:cardElevation="0dp" app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent" android:orientation="horizontal"
                         android:gravity="center_vertical" android:paddingStart="20dp"
@@ -558,7 +558,7 @@
                 <androidx.cardview.widget.CardView android:id="@+id/card4_Stress"
                     android:layout_width="match_parent" android:layout_height="58dp"
                     android:layout_marginBottom="10dp" app:cardCornerRadius="29dp"
-                    app:cardElevation="4dp" app:cardBackgroundColor="@color/card_default">
+                    app:cardElevation="0dp" app:cardBackgroundColor="@color/card_default">
                     <LinearLayout android:layout_width="match_parent"
                         android:layout_height="match_parent" android:orientation="horizontal"
                         android:gravity="center_vertical" android:paddingStart="20dp"

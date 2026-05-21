@@ -5,7 +5,7 @@
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="50dp" />
-            <solid android:color="#4D9B59FF" />
+            <solid android:color="#4D00D2FF" />
         </shape>
     </item>
     <!-- Tighter bright ring -->
@@ -13,7 +13,7 @@
         android:right="6dp" android:bottom="6dp">
         <shape android:shape="rectangle">
             <corners android:radius="50dp" />
-            <solid android:color="#6B9B59FF" />
+            <solid android:color="#6B00D2FF" />
         </shape>
     </item>
 </layer-list>

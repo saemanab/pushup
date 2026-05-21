@@ -186,9 +186,9 @@ public class AppSelectionActivity extends AppCompatActivity {
     private void showSnackbar(String msg) {
         View rootView = findViewById(android.R.id.content);
         Snackbar snack = Snackbar.make(rootView, msg, Snackbar.LENGTH_SHORT);
-        snack.setBackgroundTint(0xFF1C1B22);
+        snack.setBackgroundTint(0xFF003D7A);
         snack.setTextColor(0xFFFFFFFF);
-        snack.setActionTextColor(0xFF9B59FF);
+        snack.setActionTextColor(0xFF00D2FF);
         snack.getView().setElevation(16f);
         snack.show();
     }

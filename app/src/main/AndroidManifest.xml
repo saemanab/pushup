@@ -50,6 +50,11 @@
             </intent-filter>
         </activity>
 
+        <!-- ── Onboarding: glass welcome intro ── -->
+        <activity
+            android:name=".OnboardingWelcomeActivity"
+            android:exported="false" />
+
         <!-- ── Screen 1: Multi-step Quiz ── -->
         <activity
             android:name=".QuizActivity"

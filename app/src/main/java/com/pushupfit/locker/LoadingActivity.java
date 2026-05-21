@@ -174,7 +174,7 @@ public class LoadingActivity extends AppCompatActivity {
         // Animate circle → spinner look (just color change here; real spinner via text anim)
         if (check != null) {
             check.setText("◉");
-            check.setTextColor(0xFF9B59FF);
+            check.setTextColor(0xFF00D2FF);
             check.animate().scaleX(1.3f).scaleY(1.3f).setDuration(150)
                     .withEndAction(() -> check.animate().scaleX(1f).scaleY(1f).setDuration(150).start())
                     .start();

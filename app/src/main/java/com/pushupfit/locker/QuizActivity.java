@@ -279,10 +279,11 @@ public class QuizActivity extends AppCompatActivity {
         com.google.android.material.snackbar.Snackbar snack =
                 com.google.android.material.snackbar.Snackbar.make(rootView, msg,
                         com.google.android.material.snackbar.Snackbar.LENGTH_SHORT);
-        snack.setBackgroundTint(0xFF1C1B22);
+        snack.setBackgroundTint(0xFF003D7A);
         snack.setTextColor(0xFFFFFFFF);
-        snack.setActionTextColor(0xFF9B59FF);
+        snack.setActionTextColor(0xFF00D2FF);
         snack.getView().setElevation(16f);
         snack.show();
     }
+
 }

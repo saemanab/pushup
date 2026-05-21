@@ -1,22 +1,26 @@
 package com.pushupfit.locker;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.OvershootInterpolator;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 /**
- * SplashActivity — first launch only. Shows the app icon on the same
- * blue gradient as the launcher icon, with a short modern entrance animation.
+ * SplashActivity — shown once on first install. Icon only, then opens onboarding.
  */
 public class SplashActivity extends AppCompatActivity {
+
+    private static final long HOLD_AFTER_ICON_MS = 600;
+
+    private final Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
 
         SessionManager session = new SessionManager(this);
         if (session.isSplashShown()) {
-            navigateNext();
+            navigateNext(session);
             return;
         }
 
@@ -39,13 +43,8 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         View iconBadge = findViewById(R.id.iconBadge);
-        TextView tvTitle = findViewById(R.id.tvTitle);
-        TextView tvTagline = findViewById(R.id.tvTagline);
-        TextView btnStart = findViewById(R.id.btnGetStarted);
-
         iconBadge.setScaleX(0.88f);
         iconBadge.setScaleY(0.88f);
-        btnStart.setTranslationY(40f);
 
         AnimatorSet iconSet = new AnimatorSet();
         iconSet.playTogether(
@@ -53,44 +52,37 @@ public class SplashActivity extends AppCompatActivity {
                 ObjectAnimator.ofFloat(iconBadge, "scaleX", 0.88f, 1f),
                 ObjectAnimator.ofFloat(iconBadge, "scaleY", 0.88f, 1f));
         iconSet.setDuration(650);
-        iconSet.setInterpolator(new OvershootInterpolator(1.05f));
-
-        ObjectAnimator titleA = anim(tvTitle, "alpha", 0f, 1f, 450, 320);
-        ObjectAnimator tagA = anim(tvTagline, "alpha", 0f, 1f, 400, 480);
-        ObjectAnimator btnA = anim(btnStart, "alpha", 0f, 1f, 450, 620);
-        ObjectAnimator btnTY = anim(btnStart, "translationY", 40f, 0f, 450, 620);
-        btnTY.setInterpolator(new DecelerateInterpolator(1.4f));
-
-        AnimatorSet master = new AnimatorSet();
-        master.playTogether(iconSet, titleA, tagA, btnA, btnTY);
-        master.start();
-
-        btnStart.setOnClickListener(v -> {
-            v.animate().scaleX(0.96f).scaleY(0.96f).setDuration(80)
-                    .withEndAction(() ->
-                            v.animate().scaleX(1f).scaleY(1f).setDuration(80)
-                                    .withEndAction(this::navigateNext).start())
-                    .start();
+        iconSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                handler.postDelayed(() -> {
+                    SessionManager s = new SessionManager(SplashActivity.this);
+                    s.setSplashShown(true);
+                    goToOnboarding();
+                }, HOLD_AFTER_ICON_MS);
+            }
         });
+        iconSet.start();
     }
 
-    private ObjectAnimator anim(View v, String prop, float from, float to,
-                                long dur, long delay) {
-        ObjectAnimator a = ObjectAnimator.ofFloat(v, prop, from, to);
-        a.setDuration(dur);
-        a.setStartDelay(delay);
-        a.setInterpolator(new DecelerateInterpolator(1.6f));
-        return a;
-    }
-
-    private void navigateNext() {
-        SessionManager session = new SessionManager(this);
-        session.setSplashShown(true);
+    private void navigateNext(SessionManager session) {
         Intent intent = session.isOnboardingDone()
                 ? new Intent(this, MainActivity.class)
-                : new Intent(this, QuizActivity.class);
+                : new Intent(this, OnboardingWelcomeActivity.class);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();
+    }
+
+    private void goToOnboarding() {
+        startActivity(new Intent(this, OnboardingWelcomeActivity.class));
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        handler.removeCallbacksAndMessages(null);
+        super.onDestroy();
     }
 }

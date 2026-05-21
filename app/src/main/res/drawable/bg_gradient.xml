@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Main background gradient: deep dark purple → deep blue -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <gradient
-        android:startColor="#1A0A3A"
-        android:centerColor="#2D1B69"
-        android:endColor="#1A0A3A"
-        android:angle="135"
+        android:angle="160"
+        android:centerColor="@color/purple_dark"
+        android:endColor="@color/purple_mid"
+        android:startColor="@color/purple_deep"
         android:type="linear" />
 </shape>

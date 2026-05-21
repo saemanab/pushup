@@ -162,7 +162,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Workout Settings"
-            android:textColor="#9B59FF"
+            android:textColor="@color/purple_light"
             android:textSize="11sp"
             android:textStyle="bold"
             android:letterSpacing="0.10"
@@ -190,7 +190,7 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_dumbbell"
-                    app:tint="#9B59FF"
+                    app:tint="@color/purple_light"
                     android:contentDescription="Target reps" />
             </FrameLayout>
 
@@ -211,7 +211,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Daily push-up goal"
-                    android:textColor="#66FFFFFF"
+                    android:textColor="#FFFFFF"
                     android:textSize="11sp" />
             </LinearLayout>
 
@@ -228,7 +228,7 @@
                     android:layout_height="34dp"
                     android:background="@drawable/bg_stepper_btn"
                     android:src="@drawable/ic_minus"
-                    app:tint="#9B59FF"
+                    app:tint="@color/purple_light"
                     android:contentDescription="Decrease reps" />
 
                 <TextView
@@ -247,7 +247,7 @@
                     android:layout_height="34dp"
                     android:background="@drawable/bg_stepper_btn"
                     android:src="@drawable/ic_plus"
-                    app:tint="#9B59FF"
+                    app:tint="@color/purple_light"
                     android:contentDescription="Increase reps" />
             </LinearLayout>
         </LinearLayout>
@@ -274,7 +274,7 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_sessions"
-                    app:tint="#5B6CF5"
+                    app:tint="@color/blue_accent"
                     android:contentDescription="Break time" />
             </FrameLayout>
 
@@ -312,7 +312,7 @@
                     android:layout_height="34dp"
                     android:background="@drawable/bg_stepper_btn"
                     android:src="@drawable/ic_minus"
-                    app:tint="#5B6CF5"
+                    app:tint="@color/blue_accent"
                     android:contentDescription="Decrease break time" />
 
                 <TextView
@@ -331,7 +331,7 @@
                     android:layout_height="34dp"
                     android:background="@drawable/bg_stepper_btn"
                     android:src="@drawable/ic_plus"
-                    app:tint="#5B6CF5"
+                    app:tint="@color/blue_accent"
                     android:contentDescription="Increase break time" />
             </LinearLayout>
         </LinearLayout>
@@ -341,7 +341,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="App Settings"
-            android:textColor="#9B59FF"
+            android:textColor="@color/purple_light"
             android:textSize="11sp"
             android:textStyle="bold"
             android:letterSpacing="0.10"
@@ -455,7 +455,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:thumbTint="#FFFFFF"
-                app:trackTint="#9B59FF" />
+                app:trackTint="@color/purple_light" />
         </LinearLayout>
 
         <!-- ── Sound Effects row ──────────────────────────────────── -->
@@ -480,7 +480,7 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_sound"
-                    app:tint="#5B6CF5"
+                    app:tint="@color/blue_accent"
                     android:contentDescription="Sound" />
             </FrameLayout>
 
@@ -500,7 +500,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Play sounds on events"
-                    android:textColor="#66FFFFFF"
+                    android:textColor="#FFFFFF"
                     android:textSize="11sp" />
             </LinearLayout>
 
@@ -509,7 +509,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:thumbTint="#FFFFFF"
-                app:trackTint="#9B59FF" />
+                app:trackTint="@color/purple_light" />
         </LinearLayout>
 
         <!-- ── Footer links ───────────────────────────────────────── -->
@@ -528,14 +528,14 @@
                 android:focusable="true"
                 android:padding="8dp"
                 android:text="Privacy Policy"
-                android:textColor="#44FFFFFF"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="·"
-                android:textColor="#44FFFFFF"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp" />
@@ -549,7 +549,7 @@
                 android:focusable="true"
                 android:padding="8dp"
                 android:text="Terms &amp; Conditions"
-                android:textColor="#44FFFFFF"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -558,7 +558,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Push Up Time - Replift  v1.1"
-            android:textColor="#22FFFFFF"
+            android:textColor="#FFFFFF"
             android:textSize="11sp"
             android:gravity="center"
             android:layout_marginTop="8dp" />

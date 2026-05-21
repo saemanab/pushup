@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme — dark, no action bar -->
     <style name="Theme.PushUpLocker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_mid</item>
         <item name="colorPrimaryDark">@color/purple_deep</item>
-        <item name="colorAccent">@color/blue_accent</item>
-        <item name="android:windowBackground">@color/purple_deep</item>
-        <item name="android:statusBarColor">@color/purple_deep</item>
-        <item name="android:navigationBarColor">@color/purple_deep</item>
+        <item name="colorAccent">@color/purple_light</item>
+        <item name="android:windowBackground">@drawable/bg_gradient</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
+        <item name="android:navigationBarColor">@color/navBarColor</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
-    <!-- Splash — icon gradient, immersive -->
     <style name="Theme.PushUpLocker.Splash" parent="Theme.PushUpLocker">
         <item name="android:windowBackground">@drawable/bg_splash_gradient</item>
         <item name="android:statusBarColor">@color/splash_gradient_bottom</item>
